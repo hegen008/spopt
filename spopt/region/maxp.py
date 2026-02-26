@@ -227,6 +227,7 @@ def _construction_phase(
                     c += 1
                     labels[p] = c
                     region_list[c] = [p]
+                    region_spatial_attr[c] = threshold_array[p]
                 else:
                     labels[p] = -1
             else:
