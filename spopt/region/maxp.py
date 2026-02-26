@@ -223,7 +223,12 @@ def _construction_phase(
             neighbor_polys = deepcopy(weight.neighbors[p])
 
             if len(neighbor_polys) == 0:
-                labels[p] = -1
+                if threshold_array[p] >= spatial_thre:
+                    c += 1
+                    labels[p] = c
+                    region_list[c] = [p]
+                else:
+                    labels[p] = -1
             else:
                 c += 1
                 labeled_id, spatial_attr_total = _grow_cluster_for_poly(
